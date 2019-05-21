@@ -9,7 +9,11 @@
           placeholder="Enter a skill you have.."
           v-model="skill"
         >
-        <transition name="alert-in"  enter-active-class="animated flipInX" leave-active-class="animated flipOutX">
+        <transition
+          name="alert-in"
+          enter-active-class="animated flipInX"
+          leave-active-class="animated flipOutX"
+        >
           <p class="alert" v-if="errors.has('skill')">{{ errors.first('skill') }}</p>
         </transition>
       </form>
@@ -48,10 +52,6 @@ export default {
         }
       });
     }
-  },
-
-  props: {
-    msg: String
   }
 };
 </script>
