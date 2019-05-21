@@ -3,13 +3,15 @@
     <div class="holder">
       <form @submit.prevent="addSkill">
         <input
-          v-validate="{rules: {required: {}, min:5, max: 15}}"
+          v-validate="{rules: {min:5, max: 15}}"
           name="skill"
           type="text"
           placeholder="Enter a skill you have.."
           v-model="skill"
         >
-        <p class="alert" v-if="errors.has('skill')">{{ errors.first('skill') }}</p>
+        <transition name="alert-in"  enter-active-class="animated flipInX" leave-active-class="animated flipOutX">
+          <p class="alert" v-if="errors.has('skill')">{{ errors.first('skill') }}</p>
+        </transition>
       </form>
       <ul>
         <li v-for="(data, index) in skills" :key="index">{{data.skill}}</li>
