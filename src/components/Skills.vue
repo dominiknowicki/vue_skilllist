@@ -18,7 +18,9 @@
         </transition>
       </form>
       <ul>
-        <li v-for="(data, index) in skills" :key="index">{{data.skill}}</li>
+        <li v-for="(data, index) in skills" :key="index">{{data.skill}}
+             <i class="fa fa-minus-circle" v-on:click="remove(index)"></i>
+        </li>
       </ul>
       <p>These are the skills that you possess.</p>
     </div>
@@ -51,6 +53,10 @@ export default {
           console.log("Not valid");
         }
       });
+    },
+
+    remove(index) {
+      this.skills.splice(index, 1);
     }
   }
 };
